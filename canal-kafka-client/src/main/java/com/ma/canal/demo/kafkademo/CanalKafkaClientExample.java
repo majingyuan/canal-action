@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,10 +41,10 @@ public class CanalKafkaClientExample {
     public static void main(String[] args) {
         try {
 
-            PropUtil.getProp("config.properties");
+            Properties prop  = PropUtil.getProp("config.properties");
             final CanalKafkaClientExample kafkaCanalClientExample = new CanalKafkaClientExample(
                     "",
-                "172.25.61.82:9092,172.25.61.87:9092,172.25.61.93:9092",
+                prop.getProperty("servers"),
                 "example",
                 null,
                 "g4");
